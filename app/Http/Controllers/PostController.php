@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Interests;
 use App\Models\Language;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
     public function index()
     {
         return view('dashboard', [
-            'posts' => Post::latest()->filter(request(['search']))
-                ->paginate(6)->withQueryString()
+            'posts' => Post::where('user_id', Auth::id())->latest()->paginate(6)->withQueryString()
         ]);
     }
 
