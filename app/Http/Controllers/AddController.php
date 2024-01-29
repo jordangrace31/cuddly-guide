@@ -23,13 +23,14 @@ class AddController extends Controller
         $interestList = implode(',', $selectedInterests);
 
         $attributes = request()->validate([
-            'name' => 'required',
-            'surname' => 'required',
+            'name' => 'required|string',
+            'surname' => 'required|string',
             'email' => 'required|email',
-            'mobile' => 'required',
-            'sa_id' => 'required',
+            'mobile' => 'required|digits:10',
+            'sa_id' => 'required|digits:13',
             'birthdate' => 'required',
-            'language' => 'required'
+            'language' => 'required',
+            'interest' => 'required'
         ]);
 
         $attributes['interests'] = $interestList;

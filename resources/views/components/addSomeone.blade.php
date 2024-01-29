@@ -132,7 +132,11 @@
                     </div>
                 </div>
 
-                <x-select :interests="$interests"/>
+                <x-select :interests="$interests">
+                @error('interests')
+                <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                @enderror
+                </x-select>
 
                 <div class="mb-6">
                     <x-primary-button class="ms-4">
