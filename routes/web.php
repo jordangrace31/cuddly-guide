@@ -4,6 +4,7 @@ use App\Http\Controllers\AddController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard',[
-    'posts' => Post::latest()->paginate(6)->withQueryString()
+    'posts' => Post::where('user_id', Auth::id())->latest()->paginate(6)->withQueryString()
         ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
