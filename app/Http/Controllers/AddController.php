@@ -3,15 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\User;
 use App\Notifications\EmailAdded;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
 
 class AddController extends Controller
@@ -35,7 +30,7 @@ class AddController extends Controller
 
         $attributes['interests'] = $interestList;
         $attributes['user_id'] = Auth::id();
-        $attributes['slug'] = STR::random();
+        $attributes['slug'] = Str::uuid();
 
         $user = Post::create($attributes);
 
