@@ -29,7 +29,7 @@ class AddController extends Controller
 
         $attributes['interests'] = $interestList;
         $attributes['user_id'] = Auth::id();
-        $attributes['slug'] = Str::random();
+        $attributes['slug'] = Str::uuid();
 
         $user = Post::create($attributes);
 
