@@ -24,13 +24,12 @@ class AddController extends Controller
             'mobile' => 'required|digits:10',
             'sa_id' => 'required|digits:13',
             'birthdate' => 'required',
-            'language' => 'required',
-            'interest' => 'required'
+            'language' => 'required'
         ]);
 
         $attributes['interests'] = $interestList;
         $attributes['user_id'] = Auth::id();
-        $attributes['slug'] = Str::uuid();
+        $attributes['slug'] = Str::random();
 
         $user = Post::create($attributes);
 

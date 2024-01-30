@@ -86,6 +86,7 @@
                            type="number"
                            name="sa_id"
                            id="sa_id"
+                           value="{{ old('sa_id') }}"
                            required
                     >
 
@@ -106,6 +107,7 @@
                            type="date"
                            name="birthdate"
                            id="birthdate"
+                           value="{{ old('birthdate') }}"
                            required
                     >
 
